@@ -37,6 +37,8 @@
               curl
               p7zip
               util-linux
+              zip
+              unzip
             ];
           };
         }
