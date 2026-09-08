@@ -22,6 +22,21 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               git
+              bash
+              openssh
+              just
+              nano
+              nano
+              man
+              fastfetch
+              onefetch
+              lnav
+              htop
+              ncdu
+              wget
+              curl
+              p7zip
+              util-linux
             ];
           };
         }
