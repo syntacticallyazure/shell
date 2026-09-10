@@ -68,6 +68,7 @@
               alias neofetch='fastfetch'
               alias aria2c='aria2c --seed-time=0'
               alias where='which'
+              alias scoop='echo "Hey! You are on Unix, not Windows!"'
             '';
           };
         }
