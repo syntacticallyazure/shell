@@ -36,7 +36,6 @@
               onefetch
               lnav
               htop
-              ncdu
               wget
               curl
               p7zip
@@ -62,7 +61,6 @@
               alias cat='bat'
               alias ncdu='dust'
               alias du='dust'
-              alias queue='pueue'
               alias ls='eza'
               alias ripgrep='rga'
               alias of='onefetch'
