@@ -47,7 +47,6 @@
               fd
               bat
               eza
-              zoxide
               xh
               dust
               hyperfine
@@ -69,7 +68,6 @@
               alias neofetch='fastfetch'
               alias aria2c='aria2c --seed-time=0'
               alias where='which'
-              eval "$(zoxide init --cmd cd bash)"
             '';
           };
         }
