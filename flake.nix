@@ -22,28 +22,6 @@
           fastfetch.jsonc = ./config/fastfetch.jsonc;
         };
 
-        shellHooks = {
-          bash = ''
-            alias cat='bat'
-            alias ncdu='dust'
-            alias du='dust'
-            alias queue='pueue'
-            alias ls='eza'
-            alias ripgrep='rga'
-
-            alias of='onefetch'
-            alias ff='fastfetch'
-            alias neofetch='fastfetch'
-
-            alias aria2c='aria2c --seed-time=0'
-            eval "$(zoxide init --cmd cd bash)"
-          '';
-          fastfetch = ''
-            alias fastfetch="${pkgs.fastfetch}/bin/fastfetch --config ${config.fastfetch.jsonc}";
-            alias ff=fastfetch
-          '';
-        };
-
         in
         {
           default = pkgs.mkShell {
@@ -52,7 +30,6 @@
               bash
               openssh
               just
-              nano
               nano
               man
               fastfetch
@@ -80,6 +57,21 @@
               ripgrep-all
               aria2
             ];
+
+            shellHook = ''
+              alias cat='bat'
+              alias ncdu='dust'
+              alias du='dust'
+              alias queue='pueue'
+              alias ls='eza'
+              alias ripgrep='rga'
+              alias of='onefetch'
+              alias fastfetch='${pkgs.fastfetch}/bin/fastfetch --config ${config.fastfetch.jsonc}'
+              alias ff='fastfetch'
+              alias neofetch='fastfetch'
+              alias aria2c='aria2c --seed-time=0'
+              eval "$(zoxide init --cmd cd bash)"
+            '';
           };
         }
       );
