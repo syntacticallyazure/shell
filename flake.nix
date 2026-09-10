@@ -23,6 +23,21 @@
         };
 
         shellHooks = {
+          bash = ''
+            alias cat='bat'
+            alias ncdu='dust'
+            alias du='dust'
+            alias queue='pueue'
+            alias ls='eza'
+            alias ripgrep='rga'
+
+            alias of='onefetch'
+            alias ff='fastfetch'
+            alias neofetch='fastfetch'
+
+            alias aria2c='aria2c --seed-time=0'
+            eval "$(zoxide init --cmd cd bash)"
+          '';
           fastfetch = ''
             alias fastfetch="${pkgs.fastfetch}/bin/fastfetch --config ${config.fastfetch.jsonc}";
           '';
@@ -52,6 +67,17 @@
               unzip
               python3
               uv
+              fd
+              bat
+              eza
+              zoxide
+              xh
+              dust
+              hyperfine
+              delta
+              ripgrep
+              ripgrep-all
+              aria2
             ];
           };
         }
