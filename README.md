@@ -6,5 +6,5 @@ It is a series of commands and tools that may or may not have baked in defaults 
 nix develop github:syntacticallyazure/shell
 
 #dev command
-nix develop --refresh github:syntacticallyazure/shell --command ff
+nix develop --refresh github:syntacticallyazure/shell --command true
 ```
