@@ -1,5 +1,6 @@
 ```bash
 nix develop github:syntacticallyazure/shell
 
-nix develop --refresh github:syntacticallyazure/shell
+#dev command
+nix develop --refresh github:syntacticallyazure/shell --command true
 ```
