@@ -22,6 +22,12 @@
           fastfetch.jsonc = ./config/fastfetch.jsonc;
         };
 
+        shellHooks = {
+          fastfetch = ''
+            alias fastfetch="${pkgs.fastfetch}/bin/fastfetch --config ${config.fastfetch.jsonc}";
+          '';
+        };
+
         in
         {
           default = pkgs.mkShell {
