@@ -40,6 +40,7 @@
           '';
           fastfetch = ''
             alias fastfetch="${pkgs.fastfetch}/bin/fastfetch --config ${config.fastfetch.jsonc}";
+            alias ff=fastfetch
           '';
         };
 
