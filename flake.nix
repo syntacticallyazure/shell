@@ -17,6 +17,11 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
+
+        config = {
+          fastfetch.jsonc = ./config/fastfetch.jsonc;
+        };
+
         in
         {
           default = pkgs.mkShell {
