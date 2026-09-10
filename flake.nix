@@ -44,6 +44,8 @@
               util-linux
               zip
               unzip
+              python
+              uv
             ];
           };
         }
