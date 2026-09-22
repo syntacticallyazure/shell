@@ -59,6 +59,8 @@
               sherlock
             ];
 
+            # tor --HTTPTunnelPort 8118
+
             shellHook = ''
               alias cat='bat'
               alias ncdu='dust'
