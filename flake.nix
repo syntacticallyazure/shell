@@ -54,6 +54,9 @@
               ripgrep
               ripgrep-all
               aria2
+              nmap
+              tor
+              sherlock
             ];
 
             shellHook = ''
