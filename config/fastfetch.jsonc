@@ -13,6 +13,11 @@
       "type": "command",
       "key": "python",
       "text": "python --version | tr '[:upper:]' '[:lower:]'"
+    },
+    {
+      "type": "command",
+      "key": "sherlock",
+      "text": "sherlock --version | tr '[:upper:]' '[:lower:]'"
     }
   ]
 }
