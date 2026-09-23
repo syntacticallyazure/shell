@@ -54,29 +54,9 @@
           ];
 
           fastfetchPackages = with pkgs; [
-            git
             just
-            nano
-            fastfetch
-            onefetch
-            lnav
-            htop
-            wget
-            curl
             python3
-            uv
-            fd
-            bat
-            eza
-            xh
-            dust
-            hyperfine
-            delta
-            ripgrep
-            ripgrep-all
-            aria2
-            nmap
-            tor
+            fastfetch
             sherlock
           ];
 
