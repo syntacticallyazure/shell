@@ -60,10 +60,18 @@
             sherlock
           ];
 
+          fastfetchExceptions = {
+            python3 = "python";
+          };
+
           fastfetchModules = map (
-            package: {
+            package:
+            let
+              name = package.pname or package.name;
+            in
+            {
               type = "custom";
-              key = package.pname or package.name;
+              key = fastfetchExceptions.${name} or name;
               format = package.version or "unknown";
             }
           ) fastfetchPackages;
