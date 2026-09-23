@@ -105,6 +105,10 @@
               alias aria2c='aria2c --seed-time=0'
               alias where='which'
               alias tor='tor --HTTPTunnelPort 8118'
+
+              alias mv='mv -v';
+              alias cp='cp -v';
+              alias rm='rm -v';
             '';
           };
         }
