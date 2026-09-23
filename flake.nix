@@ -3,7 +3,8 @@
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = { nixpkgs, ... }:
+  outputs =
+    { nixpkgs, ... }:
     let
       systems = [
         "x86_64-linux"
@@ -18,48 +19,90 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
 
-        config = {
-          fastfetch.jsonc = ./config/fastfetch.jsonc;
-        };
+          packages = with pkgs; [
+            git
+            bash
+            openssh
+            just
+            nano
+            man
+            fastfetch
+            onefetch
+            lnav
+            htop
+            wget
+            curl
+            p7zip
+            util-linux
+            zip
+            unzip
+            python3
+            uv
+            fd
+            bat
+            eza
+            xh
+            dust
+            hyperfine
+            delta
+            ripgrep
+            ripgrep-all
+            aria2
+            nmap
+            tor
+            sherlock
+          ];
 
+          fastfetchPackages = with pkgs; [
+            git
+            just
+            nano
+            fastfetch
+            onefetch
+            lnav
+            htop
+            wget
+            curl
+            python3
+            uv
+            fd
+            bat
+            eza
+            xh
+            dust
+            hyperfine
+            delta
+            ripgrep
+            ripgrep-all
+            aria2
+            nmap
+            tor
+            sherlock
+          ];
+
+          fastfetchModules = map (
+            package: {
+              type = "custom";
+              key = package.pname or package.name;
+              format = package.version or "unknown";
+            }
+          ) fastfetchPackages;
+
+          fastfetchConfig = pkgs.writeText "fastfetch.json" (
+            builtins.toJSON {
+              "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
+
+              logo = {
+                type = "none";
+              };
+
+              modules = fastfetchModules;
+            }
+          );
         in
         {
           default = pkgs.mkShell {
-            packages = with pkgs; [
-              git
-              bash
-              openssh
-              just
-              nano
-              man
-              fastfetch
-              onefetch
-              lnav
-              htop
-              wget
-              curl
-              p7zip
-              util-linux
-              zip
-              unzip
-              python3
-              uv
-              fd
-              bat
-              eza
-              xh
-              dust
-              hyperfine
-              delta
-              ripgrep
-              ripgrep-all
-              aria2
-              nmap
-              tor
-              sherlock
-            ];
-
-            # tor --HTTPTunnelPort 8118
+            inherit packages;
 
             shellHook = ''
               alias cat='bat'
@@ -68,7 +111,7 @@
               alias ls='eza'
               alias ripgrep='rga'
               alias of='onefetch'
-              alias fastfetch='${pkgs.fastfetch}/bin/fastfetch --config ${config.fastfetch.jsonc}'
+              alias fastfetch='${pkgs.fastfetch}/bin/fastfetch --config ${fastfetchConfig}'
               alias ff='fastfetch'
               alias neofetch='fastfetch'
               alias aria2c='aria2c --seed-time=0'
