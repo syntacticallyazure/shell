@@ -60,6 +60,12 @@
             tor
             feroxbuster
             sherlock
+pkgs.fetchFromGitHub {
+        owner = "aels";
+        repo = "subdirectories-discover";
+        rev = "main";
+        hash = pkgs.lib.fakeHash;
+      }
             # gradlever.packages.${system}.default
           ];
 
