@@ -4,14 +4,15 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    gradlever = {
-      url = "github:syntacticallyazure/gradlever";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # gradlever = {
+    #   url = "github:syntacticallyazure/gradlever";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =
-    { nixpkgs, gradlever, ... }:
+    # { nixpkgs, gradlever, ... }:
+    { nixpkgs, ... }:
     let
       systems = [
         "x86_64-linux"
@@ -58,7 +59,7 @@
             nmap
             tor
             sherlock
-            gradlever.packages.${system}.default
+            # gradlever.packages.${system}.default
           ];
 
           config = {
