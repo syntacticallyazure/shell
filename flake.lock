@@ -18,6 +18,24 @@
         "type": "github"
       }
     },
+    "gradlever2test": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1790329052,
+        "narHash": "sha256-lBJ6P2kaR+9q5vYF7uZmzyNkVZwyNPq8PigJ9Xjaoqg=",
+        "owner": "syntacticallyazure",
+        "repo": "gradlever",
+        "rev": "d2fa61fce993cec0011ac38cf68abc5366c3a87f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "syntacticallyazure",
+        "repo": "gradlever",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1790185690,
@@ -50,10 +68,27 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1790185690,
+        "narHash": "sha256-xJ+X4hBtOcAFGBOe5nAMyMUeF9foJBmIOu3NjBqBycU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4975466d324710c576dc11ad614684e6bd8cad8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "gradlever": "gradlever",
-        "nixpkgs": "nixpkgs_2"
+        "gradlever2test": "gradlever2test",
+        "nixpkgs": "nixpkgs_3"
       }
     }
   },
