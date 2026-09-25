@@ -27,6 +27,13 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
 
+wordlist_subdirectories = pkgs.fetchFromGitHub {
+    owner = "aels";
+    repo = "subdirectories-discover";
+    rev = "main";
+    hash = pkgs.lib.fakeHash;
+  };
+
           packages = with pkgs; [
             git
             bash
@@ -60,12 +67,7 @@
             tor
             feroxbuster
             sherlock
-pkgs.fetchFromGitHub {
-        owner = "aels";
-        repo = "subdirectories-discover";
-        rev = "main";
-        hash = pkgs.lib.fakeHash;
-      }
+wordlist_subdirectories
             # gradlever.packages.${system}.default
           ];
 
