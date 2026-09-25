@@ -58,6 +58,7 @@
             aria2
             nmap
             tor
+            feroxbuster
             sherlock
             # gradlever.packages.${system}.default
           ];
