@@ -57,7 +57,7 @@
           config = {
             # oh-my-posh.tokyo_nights = ./oh-my-posh/tokyo_nights.omp.json;
             # oh-my-posh.catppuccin_mocha = ./oh-my-posh/catppuccin_mocha.omp.json;
-            oh-my-posh.catppuccin_frappe = ./oh-my-posh/catppuccin_frappe.omp.json;
+            oh-my-posh.catppuccin_frappe = ./config/oh-my-posh/catppuccin_frappe.omp.json;
             # oh-my-posh.catppuccin_latte = ./oh-my-posh/catppuccin_latte.omp.json;
           };
 
