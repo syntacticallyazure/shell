@@ -54,6 +54,13 @@
             sherlock
           ];
 
+          config = {
+            # oh-my-posh.tokyo_nights = ./oh-my-posh/tokyo_nights.omp.json;
+            # oh-my-posh.catppuccin_mocha = ./oh-my-posh/catppuccin_mocha.omp.json;
+            oh-my-posh.catppuccin_frappe = ./oh-my-posh/catppuccin_frappe.omp.json;
+            # oh-my-posh.catppuccin_latte = ./oh-my-posh/catppuccin_latte.omp.json;
+          };
+
           fastfetchPackages = with pkgs; [
             just
             python3
@@ -110,6 +117,8 @@
               alias mv='mv -v';
               alias cp='cp -v';
               alias rm='rm -v';
+
+              eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init bash --config ${config.oh-my-posh.catppuccin_frappe})"
             '';
           };
         }
