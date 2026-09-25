@@ -34,6 +34,13 @@
               hash = "sha256-4soBZLuIUXf9tBSzvgmeA5GFI9unfql55ZAmSIzemL0=";
             };
 
+          feroxbuster = pkgs.symlinkJoin {
+            name = "feroxbuster";
+            paths = [ pkgs.feroxbuster ];
+            buildInputs = [ pkgs.makeWrapper ];
+            postBuild = "wrapProgram $out/bin/feroxbuster --add-flags '--wordlist ${wordlist_subdirectories}/directory-list-2.3-medium.txt'";
+          };
+
           packages = with pkgs; [
             git
             bash
