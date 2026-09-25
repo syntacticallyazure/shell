@@ -3,6 +3,7 @@
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.gradlever.url = "github:syntacticallyazure/gradlever";
+  inputs.gradlever2test.url = "github:syntacticallyazure/gradlever";
 
   outputs =
     { nixpkgs, ... }:
