@@ -3,15 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    # gradlever = {
-    #   url = "github:syntacticallyazure/gradlever";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs =
-    # { nixpkgs, gradlever, ... }:
     { nixpkgs, ... }:
     let
       systems = [
@@ -28,17 +22,42 @@
           pkgs = nixpkgs.legacyPackages.${system};
 
           wordlist_subdirectories = pkgs.fetchFromGitHub {
-              owner = "aels";
-              repo = "subdirectories-discover";
-              rev = "main";
-              hash = "sha256-4soBZLuIUXf9tBSzvgmeA5GFI9unfql55ZAmSIzemL0=";
-            };
+            owner = "aels";
+            repo = "subdirectories-discover";
+            rev = "main";
+            hash = "sha256-4soBZLuIUXf9tBSzvgmeA5GFI9unfql55ZAmSIzemL0=";
+          };
 
           feroxbuster = pkgs.symlinkJoin {
             name = "feroxbuster";
             paths = [ pkgs.feroxbuster ];
             buildInputs = [ pkgs.makeWrapper ];
             postBuild = "wrapProgram $out/bin/feroxbuster --add-flags '--wordlist ${wordlist_subdirectories}/directory-list-2.3-medium.txt'";
+          };
+
+          aria2 = pkgs.symlinkJoin {
+            name = "aria2";
+            paths = [ pkgs.aria2 ];
+            buildInputs = [ pkgs.makeWrapper ];
+            postBuild = "wrapProgram $out/bin/aria2c --add-flags '--seed-time=0'";
+          };
+
+          tor = pkgs.symlinkJoin {
+            name = "tor";
+            paths = [ pkgs.tor ];
+            buildInputs = [ pkgs.makeWrapper ];
+            postBuild = "wrapProgram $out/bin/tor --add-flags '--HTTPTunnelPort 8118'";
+          };
+
+          coreutils = pkgs.symlinkJoin {
+            name = "coreutils";
+            paths = [ pkgs.coreutils ];
+            buildInputs = [ pkgs.makeWrapper ];
+            postBuild = ''
+              wrapProgram $out/bin/mv --add-flags '-v'
+              wrapProgram $out/bin/cp --add-flags '-v'
+              wrapProgram $out/bin/rm --add-flags '-v'
+            '';
           };
 
           packages = with pkgs; [
@@ -76,14 +95,11 @@
             sherlock
             nikto
             wordlist_subdirectories
-            # gradlever.packages.${system}.default
+            coreutils
           ];
 
           config = {
-            # oh-my-posh.tokyo_nights = ./oh-my-posh/tokyo_nights.omp.json;
-            # oh-my-posh.catppuccin_mocha = ./oh-my-posh/catppuccin_mocha.omp.json;
             oh-my-posh.catppuccin_frappe = ./config/oh-my-posh/catppuccin_frappe.omp.json;
-            # oh-my-posh.catppuccin_latte = ./oh-my-posh/catppuccin_latte.omp.json;
           };
 
           fastfetchPackages = with pkgs; [
@@ -135,13 +151,7 @@
               alias fastfetch='${pkgs.fastfetch}/bin/fastfetch --config ${fastfetchConfig}'
               alias ff='fastfetch'
               alias neofetch='fastfetch'
-              alias aria2c='aria2c --seed-time=0'
               alias where='which'
-              alias tor='tor --HTTPTunnelPort 8118'
-
-              alias mv='mv -v'
-              alias cp='cp -v'
-              alias rm='rm -v'
 
               eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init bash --config ${config.oh-my-posh.catppuccin_frappe})"
             '';
