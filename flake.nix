@@ -67,6 +67,7 @@ wordlist_subdirectories = pkgs.fetchFromGitHub {
             tor
             feroxbuster
             sherlock
+nikto
 wordlist_subdirectories
             # gradlever.packages.${system}.default
           ];
