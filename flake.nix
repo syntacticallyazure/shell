@@ -31,7 +31,7 @@ wordlist_subdirectories = pkgs.fetchFromGitHub {
     owner = "aels";
     repo = "subdirectories-discover";
     rev = "main";
-    hash = pkgs.lib.fakeHash;
+    hash = "sha256-4soBZLuIUXf9tBSzvgmeA5GFI9unfql55ZAmSIzemL0=";
   };
 
           packages = with pkgs; [
