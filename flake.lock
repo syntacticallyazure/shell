@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790329052,
-        "narHash": "sha256-lBJ6P2kaR+9q5vYF7uZmzyNkVZwyNPq8PigJ9Xjaoqg=",
+        "lastModified": 1790332108,
+        "narHash": "sha256-gw3+b5exqeXBnpObXOjnckvRWHWcxq4otTgZs/L6nzk=",
         "owner": "syntacticallyazure",
         "repo": "gradlever",
-        "rev": "d2fa61fce993cec0011ac38cf68abc5366c3a87f",
+        "rev": "08d78c42ab026ea7efb2a1f6ae5fc3a29f5ebd11",
         "type": "github"
       },
       "original": {
