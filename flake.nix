@@ -27,12 +27,12 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
 
-wordlist_subdirectories = pkgs.fetchFromGitHub {
-    owner = "aels";
-    repo = "subdirectories-discover";
-    rev = "main";
-    hash = "sha256-4soBZLuIUXf9tBSzvgmeA5GFI9unfql55ZAmSIzemL0=";
-  };
+          wordlist_subdirectories = pkgs.fetchFromGitHub {
+              owner = "aels";
+              repo = "subdirectories-discover";
+              rev = "main";
+              hash = "sha256-4soBZLuIUXf9tBSzvgmeA5GFI9unfql55ZAmSIzemL0=";
+            };
 
           packages = with pkgs; [
             git
@@ -67,8 +67,8 @@ wordlist_subdirectories = pkgs.fetchFromGitHub {
             tor
             feroxbuster
             sherlock
-nikto
-wordlist_subdirectories
+            nikto
+            wordlist_subdirectories
             # gradlever.packages.${system}.default
           ];
 
