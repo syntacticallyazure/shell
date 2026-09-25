@@ -1,7 +1,7 @@
 default:
     just --list
 
-update:
+update_lock:
     #!/usr/bin/env sh
     if [ "{{os()}}" = "windows" ]; then
         docker volume create nix-store
