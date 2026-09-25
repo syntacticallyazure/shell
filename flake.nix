@@ -49,17 +49,6 @@
             postBuild = "wrapProgram $out/bin/tor --add-flags '--HTTPTunnelPort 8118'";
           };
 
-          coreutils = pkgs.symlinkJoin {
-            name = "coreutils";
-            paths = [ pkgs.coreutils ];
-            buildInputs = [ pkgs.makeWrapper ];
-            postBuild = ''
-              wrapProgram $out/bin/mv --add-flags '-v'
-              wrapProgram $out/bin/cp --add-flags '-v'
-              wrapProgram $out/bin/rm --add-flags '-v'
-            '';
-          };
-
           packages = with pkgs; [
             git
             bash
@@ -152,7 +141,9 @@
               alias ff='fastfetch'
               alias neofetch='fastfetch'
               alias where='which'
-
+              alias mv='mv -v'
+              alias cp='cp -v'
+              alias rm='rm -v'
               eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init bash --config ${config.oh-my-posh.catppuccin_frappe})"
             '';
           };
