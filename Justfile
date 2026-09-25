@@ -1,9 +1,6 @@
 default:
     just --list
 
-lint:
-    # TODO
-
 update_lock:
     docker volume create nix-store;
     MSYS_NO_PATHCONV=1 docker run --rm \
