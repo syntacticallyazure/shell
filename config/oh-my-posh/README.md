@@ -1,1 +1,0 @@
-config files sourced from: https://github.com/maxstollmayer/catppuccin.omp
