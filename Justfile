@@ -19,3 +19,6 @@ update_lock:
         -w "/root/repository" \
         nixos/nix:latest \
         sh -c "nix --extra-experimental-features 'nix-command flakes' flake update"
+
+clean:
+    docker volume rm nix-store;
