@@ -52,6 +52,7 @@
             nmap
             tor
             sherlock
+            gradlever.packages.${system}.default
           ];
 
           config = {
