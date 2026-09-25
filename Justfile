@@ -1,7 +1,7 @@
 default:
     just --list
 
-update_lock:
+update:
     docker volume create nix-store;
     MSYS_NO_PATHCONV=1 docker run --rm \
         -v nix-store:/nix \
