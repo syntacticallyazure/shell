@@ -2,38 +2,22 @@ default:
     just --list
 
 update_lock:
-    #!/usr/bin/env sh
-    if [ "{{os()}}" = "windows" ]; then
-        docker volume create nix-store
-
-        MSYS_NO_PATHCONV=1 docker run --rm \
-            -v nix-store:/nix \
-            -v "{{justfile_directory()}}:/root/repository" \
-            -w /root/repository \
-            nixos/nix:latest \
-            sh -c "nix --extra-experimental-features 'nix-command flakes' flake update"
-    else
-        nix flake update
-    fi
+    docker volume create nix-store;
+    MSYS_NO_PATHCONV=1 docker run --rm \
+        -v nix-store:/nix \
+        -v "{{justfile_directory()}}:/root/repository" \
+        -w "/root/repository" \
+        nixos/nix:latest \
+        sh -c "nix --extra-experimental-features 'nix-command flakes' flake update"
 
 lint:
-    #!/usr/bin/env sh
-    if [ "{{os()}}" = "windows" ]; then
-        docker volume create nix-store
-
-        MSYS_NO_PATHCONV=1 docker run --rm \
-            -v nix-store:/nix \
-            -v "{{justfile_directory()}}:/root/repository" \
-            -w /root/repository \
-            nixos/nix:latest \
-            sh -c "nix --extra-experimental-features 'nix-command flakes' shell nixpkgs#nixfmt nixpkgs#statix -c sh -c 'nixfmt --check . && statix check .'"
-    else
-        nix shell nixpkgs#nixfmt nixpkgs#statix \
-            -c sh -c 'nixfmt --check . && statix check .'
-    fi
+    docker volume create nix-store;
+    MSYS_NO_PATHCONV=1 docker run --rm \
+    -v nix-store:/nix \
+    -v "{{justfile_directory()}}:/root/repository" \
+    -w "/root/repository" \
+    nixos/nix:latest \
+    sh -c "nix --extra-experimental-features 'nix-command flakes' shell nixpkgs#nixpkgs-fmt -c nixpkgs-fmt --check ."
 
 clean:
-    #!/usr/bin/env sh
-    if [ "{{os()}}" = "windows" ]; then
-        docker volume rm nix-store
-    fi
+    docker volume rm nix-store;
