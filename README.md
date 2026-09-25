@@ -6,8 +6,8 @@ It is a series of commands and tools that may or may not have baked in defaults 
 nix develop github:syntacticallyazure/shell
 
 #dev commands
-nix develop --refresh github:syntacticallyazure/shell --refresh
-nix develop --refresh github:syntacticallyazure/shell --refresh --command true
+nix develop --refresh github:syntacticallyazure/shell
+nix develop --refresh github:syntacticallyazure/shell --command true
 
 nix-collect-garbage -d;
 nix-store --gc;
