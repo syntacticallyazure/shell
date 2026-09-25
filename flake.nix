@@ -5,7 +5,7 @@
   inputs.gradlever.url = "github:syntacticallyazure/gradlever";
 
   outputs =
-    { nixpkgs, ... }:
+    { nixpkgs, gradlever, ... }:
     let
       systems = [
         "x86_64-linux"
