@@ -11,6 +11,7 @@ nix develop --refresh github:syntacticallyazure/shell
 # hacky method of just testing a shell
 nix develop --refresh github:syntacticallyazure/shell --command true
 
+# clean up
 nix-collect-garbage -d;
 nix-store --gc;
 ```
