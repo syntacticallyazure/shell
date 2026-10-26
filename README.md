@@ -5,8 +5,10 @@ It is a series of commands and tools that may or may not have baked in defaults 
 ```bash
 nix develop github:syntacticallyazure/shell
 
-#dev commands
+# enter shell
 nix develop --refresh github:syntacticallyazure/shell
+
+# hacky method of just testing a shell
 nix develop --refresh github:syntacticallyazure/shell --command true
 
 nix-collect-garbage -d;
