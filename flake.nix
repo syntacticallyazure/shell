@@ -51,6 +51,7 @@
 
           packages = with pkgs; [
             git
+            gh
             bash
             openssh
             just
